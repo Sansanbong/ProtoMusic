@@ -1,0 +1,31 @@
+<ion-header color="dark">
+  <ion-navbar>
+    <ion-title>Favorites</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <a class="item" full ion-item *ngFor="let favorite of favorites" (click)="play(favorite)">
+            <ion-icon *ngIf="mostrarImgs" name="flash" item-left></ion-icon>
+            {{favorite.name}}
+        </a>
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light" *ngIf="media?.isPlayingNow()" >
+    <ion-row class="player-toolbar">
+          <ion-col>
+            <button ion-button icon-only clear color="dark" (click)="media?.previous()"><ion-icon name="skip-backward"></ion-icon></button>
+          </ion-col>
+          <ion-col>
+              <button ion-button icon-only color="dark" *ngIf="media?.isPlaying" (click)="media.pause()" clear ><ion-icon name="pause"></ion-icon></button>
+            <button ion-button icon-only color="dark" *ngIf="media?.isPaused" (click)="media.play()" clear ><ion-icon name="play"></ion-icon></button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-only color="dark" (click)="media?.next()" clear><ion-icon name="skip-forward"></ion-icon></button>
+          </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

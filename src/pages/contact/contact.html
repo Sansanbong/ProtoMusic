@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Preferences
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  
+    <ion-list>
+        <ion-label class="prefTitle">Directorio default</ion-label>
+        <ion-item>
+            <ion-icon name="musical-notes" item-left></ion-icon>
+            <ion-label>{{ dir }}</ion-label>
+            <button ion-button outline item-right (click)="openFileChooser()">
+                Cambiar
+            </button>
+        </ion-item>
+        
+        <ion-label class="prefTitle">Tipo de reproducción</ion-label>    
+        <ion-item>
+            <ion-label>Seleccionar</ion-label>
+            <ion-select [ngModel]="tipoRepr" (ngModelChange)="onTipoReprChange($event)">
+                <ion-option [value]="i" *ngFor="let i of tipos_repr">{{ i }}</ion-option>
+            </ion-select>
+        </ion-item>
+        
+        <ion-label class="prefTitle">Imágenes</ion-label>    
+        <ion-item>
+            <ion-label>Mostrar imágenes</ion-label>
+            <ion-checkbox [(ngModel)]="mostrarImgs" (ionChange)="onMostrarImgsChange()" ></ion-checkbox>
+        </ion-item>
+        
+    </ion-list>
+</ion-content>
+
